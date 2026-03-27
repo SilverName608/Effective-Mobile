@@ -76,7 +76,8 @@ func (r *subscriptionRepository) Delete(ctx context.Context, id uuid.UUID) error
 
 func (r *subscriptionRepository) TotalCost(ctx context.Context, userID *uuid.UUID, serviceName *string, from, to time.Time) (int, error) {
 	q := r.db.WithContext(ctx).Model(&model.Subscription{}).
-		Where("start_date <= ? AND (end_date IS NULL OR end_date >= ?)", to, from)
+		Where("start_date <= ?", to).
+		Where("(end_date IS NULL OR end_date >= ?)", from)
 
 	if userID != nil {
 		q = q.Where("user_id = ?", *userID)
