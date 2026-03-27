@@ -28,7 +28,6 @@ coverage.out
 
 # Ignore environment variable files
 .env
-.env.* 
 
 # Ignore Go cache and build artifacts
 /$(GOPATH)/pkg/mod
