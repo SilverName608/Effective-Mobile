@@ -123,8 +123,7 @@ GET /api/v1/subscriptions?service_name=Yandex Plus
 │       ├── subscriptionImpl.go
 │       └── subscription.go
 ├── migrations/
-│   ├── 001_init.up.sql
-│   └── 001_init.down.sql
+│   ├── 001_init.sql
 ├── docs/
 │   └── swagger.yaml
 ├── .env
