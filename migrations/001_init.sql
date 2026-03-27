@@ -12,6 +12,16 @@ CREATE TABLE IF NOT EXISTS subscriptions (
     updated_at   TIMESTAMPTZ      NOT NULL DEFAULT NOW()
 );
 
+-- Индексы
 CREATE INDEX IF NOT EXISTS idx_subscriptions_user_id      ON subscriptions(user_id);
 CREATE INDEX IF NOT EXISTS idx_subscriptions_service_name ON subscriptions(service_name);
 CREATE INDEX IF NOT EXISTS idx_subscriptions_start_date   ON subscriptions(start_date);
+CREATE INDEX IF NOT EXISTS idx_subscriptions_end_date     ON subscriptions(end_date);
+
+-- Дополнительная проверка (опционально, но полезно)
+ALTER TABLE subscriptions 
+ADD CONSTRAINT chk_end_date_after_start 
+CHECK (end_date IS NULL OR end_date >= start_date);
+
+-- +goose Down
+DROP TABLE IF EXISTS subscriptions;
