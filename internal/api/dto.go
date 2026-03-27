@@ -16,13 +16,6 @@ type UpdateSubscriptionRequest struct {
 	EndDate     *string `json:"end_date,omitempty"`
 }
 
-type TotalCostRequest struct {
-	UserID      *string `json:"user_id,omitempty"`
-	ServiceName *string `json:"service_name,omitempty"`
-	From        string  `json:"from"`
-	To          string  `json:"to"`
-}
-
 type TotalCostResponse struct {
 	Total int `json:"total"`
 }

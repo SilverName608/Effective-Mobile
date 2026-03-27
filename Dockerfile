@@ -11,6 +11,7 @@ FROM alpine:3.20
 WORKDIR /app
 COPY --from=builder /app/server .
 COPY --from=builder /app/.env .
+COPY --from=builder /app/migrations ./migrations
 
 EXPOSE 8040
 CMD ["./server"]
